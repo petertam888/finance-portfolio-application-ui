@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import axios from 'axios';
 
 const BuyStockForm = () => {
@@ -18,26 +18,28 @@ const BuyStockForm = () => {
   };
 
   return (
-    <div>
+    <div style={{ marginBottom: '40px' }}>
       <h2>Buy Stock</h2>
       <form onSubmit={handleSubmit}>
-        <div>
-          <label>User ID:</label>
-          <input type="text" value={userId} onChange={(e) => setUserId(e.target.value)} />
+        <div style={{ marginBottom: '20px' }}>
+          <label style={{ display: 'block' }}>User ID:</label>
+          <input type="text" value={userId} onChange={(e) => setUserId(e.target.value)} style={{ width: '100%', padding: '8px', color: 'black', backgroundColor: '#f4f4f4', border: '1px solid #ccc', borderRadius: '4px' }} />
         </div>
-        <div>
-          <label>Stock Code:</label>
-          <input type="text" value={stockCode} onChange={(e) => setStockCode(e.target.value)} />
+        <div style={{ marginBottom: '20px' }}>
+          <label style={{ display: 'block' }}>Stock Code:</label>
+          <input type="text" value={stockCode} onChange={(e) => setStockCode(e.target.value)} style={{ width: '100%', padding: '8px', color: 'black', backgroundColor: '#f4f4f4', border: '1px solid #ccc', borderRadius: '4px' }} />
         </div>
-        <div>
-          <label>Shares:</label>
-          <input type="number" value={shares} onChange={(e) => setShares(e.target.value)} />
+        <div style={{ marginBottom: '20px' }}>
+          <label style={{ display: 'block' }}>Shares:</label>
+          <input type="number" value={shares} onChange={(e) => setShares(e.target.value)} style={{ width: '100%', padding: '8px', color: 'black', backgroundColor: '#f4f4f4', border: '1px solid #ccc', borderRadius: '4px' }} />
         </div>
-        <button type="submit">Buy</button>
+        <button type="submit" style={{ backgroundColor: '#007bff', color: 'white', padding: '10px 20px', border: 'none', borderRadius: '4px', cursor: 'pointer' }}>Buy</button>
       </form>
-      {errorMessage && <p style={{ color: 'red' }}>{errorMessage}</p>}
+      {errorMessage && <p style={{ color: 'red', marginTop: '10px' }}>{errorMessage}</p>}
     </div>
   );
 };
 
 export default BuyStockForm;
+
+
