@@ -7,7 +7,6 @@ import { useRouter } from 'next/router';
 const BuyStockForm = () => {
   const router = useRouter();
   const {backendUrl} = useBackendUrl();
-  const [userId, setUserId] = useState('');
   const [stockCode, setStockCode] = useState('');
   const [shares, setShares] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
@@ -15,7 +14,7 @@ const BuyStockForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.get(`${backendUrl}/api/transaction/${userId}/buy/${stockCode}/${shares}`);
+      await axios.get(`${backendUrl}/api/transaction/1/buy/${stockCode}/${shares}`);
       alert('Stock bought successfully!');
       router.push('/'); // Navigate to the home page
     } catch (error) {
@@ -27,10 +26,6 @@ const BuyStockForm = () => {
     <div style={{ marginBottom: '40px' }}>
       <h2>Buy Stock</h2>
       <form onSubmit={handleSubmit}>
-        <div style={{ marginBottom: '20px' }}>
-          <label style={{ display: 'block' }}>User ID:</label>
-          <input type="text" value={userId} onChange={(e) => setUserId(e.target.value)} style={{ width: '100%', padding: '8px', color: 'black', backgroundColor: '#f4f4f4', border: '1px solid #ccc', borderRadius: '4px' }} />
-        </div>
         <div style={{ marginBottom: '20px' }}>
           <label style={{ display: 'block' }}>Stock Code:</label>
           <input type="text" value={stockCode} onChange={(e) => setStockCode(e.target.value)} style={{ width: '100%', padding: '8px', color: 'black', backgroundColor: '#f4f4f4', border: '1px solid #ccc', borderRadius: '4px' }} />
