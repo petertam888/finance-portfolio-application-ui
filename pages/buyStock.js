@@ -1,9 +1,12 @@
 // pages/page1.js
-export default function buyStock() {
+
+import BuyStockForm from '../components/BuyStockForm';
+
+export default function buyStock({backendUrl}) {
     return (
-      <div>
-        <h1>This is Page 1</h1>
-        <p>This is the content of Page 1.</p>
+      <div id="buy" style={{ marginBottom: '40px' }}>
+        <h2 style={{ marginBottom: '20px' }}>Buy Stocks</h2>
+        <BuyStockForm backendUrl={backendUrl} />
       </div>
     );
   }

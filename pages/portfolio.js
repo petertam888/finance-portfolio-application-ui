@@ -1,9 +1,10 @@
-// pages/page1.js
+import CheckPortfolio from '../components/CheckPortfolio';
+
 export default function portfolio() {
     return (
-      <div>
-        <h1>This is Page 1</h1>
-        <p>This is the content of Page 1.</p>
+      <div id="buy" style={{ marginBottom: '40px' }}>
+        <h2 style={{ marginBottom: '20px' }}>My Portfolio </h2>
+        <CheckPortfolio/>
       </div>
     );
   }

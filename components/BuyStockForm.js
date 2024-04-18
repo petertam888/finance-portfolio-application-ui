@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import { useBackendUrl } from '../context/BackendUrlContext';
 
 const BuyStockForm = () => {
+  const {backendUrl} = useBackendUrl();
   const [userId, setUserId] = useState('');
   const [stockCode, setStockCode] = useState('');
   const [shares, setShares] = useState('');
@@ -10,7 +12,7 @@ const BuyStockForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.get(`/api/transaction/${userId}/buy/${stockCode}/${shares}`);
+      await axios.get(`${backendUrl}/api/transaction/${userId}/buy/${stockCode}/${shares}`);
       alert('Stock bought successfully!');
     } catch (error) {
       setErrorMessage('Failed to buy stock. Please try again.');

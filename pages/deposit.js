@@ -1,9 +1,10 @@
-// pages/page1.js
+import AddDepositForm from '../components/AddDepositForm';
+
 export default function deposit() {
     return (
-      <div>
-        <h1>This is Page 1</h1>
-        <p>This is the content of Page 1.</p>
+      <div id="buy" style={{ marginBottom: '40px' }}>
+        <h2 style={{ marginBottom: '20px' }}>Add Deposit </h2>
+        <AddDepositForm />
       </div>
     );
   }
