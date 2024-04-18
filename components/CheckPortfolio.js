@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import { useBackendUrl } from '../context/BackendUrlContext';
 
-const CheckPortfolio = ({ backendUrl }) => {
+const CheckPortfolio = () => {
+  const {backendUrl} = useBackendUrl();
   const [userId, setUserId] = useState('');
   const [portfolioInfo, setPortfolioInfo] = useState(null);
   const [errorMessage, setErrorMessage] = useState('');
   const [isLoading, setIsLoading] = useState(false);
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsLoading(true);

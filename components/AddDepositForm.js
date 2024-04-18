@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import { useBackendUrl } from '../context/BackendUrlContext';
 
 const AddDepositForm = () => {
+  const {backendUrl} = useBackendUrl();
   const [userId, setUserId] = useState('');
   const [cashAmount, setCashAmount] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
@@ -9,7 +11,7 @@ const AddDepositForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.get(`/api/user/${userId}/deposit/${cashAmount}`);
+      await axios.get(`${backendUrl}/api/user/${userId}/deposit/${cashAmount}`);
       alert('Deposit added successfully!');
     } catch (error) {
       setErrorMessage('Failed to add deposit. Please try again.');
