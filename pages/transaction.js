@@ -22,13 +22,13 @@ export default function Transaction() {
       {/* Main content */}
       <div className="flex-grow flex">
         {/* Add Deposit Form */}
-        <div className="w-1/2 bg-gray-300 p-4">
+        <div className="w-1/2 bg-gray-600 p-4">
           <h2 className="text-lg font-bold mb-2">DEPOSIT</h2>
           <AddDepositForm />
         </div>
 
         {/* Buy Stock Form */}
-        <div className="w-1/2 bg-gray-600 p-4">
+        <div className="w-1/2 bg-gray-900 p-4">
           <h2 className="text-lg font-bold mb-2">STOCK RECORD</h2>
           <BuyStockForm />
         </div>
