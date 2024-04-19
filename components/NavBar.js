@@ -10,13 +10,8 @@ const NavBar = () => {
           </Link>
         </li>
         <li>
-          <Link href={`/buyStock`}>
-            <button className="hover:bg-blue-400 bg-blue-600 text-white py-2 px-4 rounded-lg">Add Transaction</button>
-          </Link>
-        </li>
-        <li>
-          <Link href={`/deposit`}>
-            <button className="hover:bg-blue-400 bg-blue-600 text-white py-2 px-4 rounded-lg">Add Deposit</button>
+          <Link href={`/transaction`}>
+            <button className="hover:bg-blue-400 bg-blue-600 text-white py-2 px-4 rounded-lg">Add Transaction Record</button>
           </Link>
         </li>
       </ul>

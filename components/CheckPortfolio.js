@@ -26,26 +26,38 @@ const CheckPortfolio = () => {
   }, [backendUrl]);
 
   return (
-    <div style={{ marginBottom: '40px' }}>
+    <div className="container mx-auto px-4 py-8">
+      <h1 className="text-3xl font-semibold mb-4">Portfolio Information</h1>
       {isLoading ? (
         <p>Loading...</p>
       ) : errorMessage ? (
-        <p style={{ color: 'red', marginBottom: '20px' }}>{errorMessage}</p>
+        <p className="text-red-500 mb-4">{errorMessage}</p>
       ) : portfolioInfo && (
-        <div>
-          <h3>Portfolio Info</h3>
-          <p>Total Account Amount: ${portfolioInfo.totalAccountAmount}</p>
-          <p>Cash Amount: ${portfolioInfo.cashAmount}</p>
-          <h4>Stocks Info:</h4>
-          <ul>
-            {portfolioInfo.stocksInfo.map((stock, index) => (
-              <li key={index}>
-                Stock Code: {stock.stockCode}, Shares: {stock.shares}
-              </li>
-            ))}
-          </ul>
-          {console.log(portfolioInfo)} {/* Log portfolioInfo object */}
-          <PortfolioChart portfolioInfo={portfolioInfo} />
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div>
+            <h2 className="text-xl font-semibold mb-2">Account Summary</h2>
+            <div className="bg-gray-100 p-4 rounded-lg">
+              <p className="text-black"><span className="font-semibold text-black">Total Account Amount:</span> ${portfolioInfo.totalAccountAmount}</p>
+              <p className="text-black"><span className="font-semibold text-black">Cash Amount:</span> ${portfolioInfo.cashAmount}</p>
+            </div>
+          </div>
+          <div>
+            <h2 className="text-xl font-semibold mb-2">Stocks Info</h2>
+            <div className="bg-gray-100 p-4 rounded-lg">
+              <ul>
+                {portfolioInfo.stocksInfo.map((stock, index) => (
+                  <li key={index} className="mb-2">
+                    <p className="text-black">
+                      <span className="font-semibold text-black">Stock Code:</span> {stock.stockCode} | <span className="font-semibold text-black">Shares:</span> {stock.shares}
+                    </p>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+          <div className="col-span-2">
+            <PortfolioChart portfolioInfo={portfolioInfo} />
+          </div>
         </div>
       )}
     </div>
@@ -53,6 +65,12 @@ const CheckPortfolio = () => {
 };
 
 export default CheckPortfolio;
+
+
+
+
+
+
 
 
 

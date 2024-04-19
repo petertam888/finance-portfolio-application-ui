@@ -11,6 +11,10 @@ const generateRandomColor = () => {
 };
 
 const PortfolioChart = ({ portfolioInfo }) => {
+  if (!portfolioInfo) {
+    return <p>No data available for the portfolio.</p>;
+  }
+
   // Extract data from portfolioInfo
   const stocksInfo = portfolioInfo.stocksInfo;
   const totalAccountAmount = portfolioInfo.totalAccountAmount;
@@ -57,7 +61,9 @@ const PortfolioChart = ({ portfolioInfo }) => {
     plugins: {
       legend: {
         position: 'top',
-        label: {fontSize:16},
+        labels: {
+          fontSize: 12 // Increase legend font size
+        }
       },
       title: {
         display: true,
@@ -67,14 +73,18 @@ const PortfolioChart = ({ portfolioInfo }) => {
   };
 
   return (
-    <div style={{ marginTop: '10px' }}>
-      <h3>Portfolio Composition</h3>
-      <Pie data={chartData} options={chartOptions} width={10} height={10}/>
+    <div style={{ marginTop: '10px', width: '50%', minWidth: '300px' }}>
+      <Pie data={chartData} options={chartOptions} />
     </div>
   );
 };
 
 export default PortfolioChart;
+
+
+
+
+
 
 
 
