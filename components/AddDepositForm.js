@@ -12,6 +12,7 @@ const AddDepositForm = () => {
     try {
       await axios.get(`${backendUrl}/api/user/1/deposit/${cashAmount}`);
       alert('Deposit added successfully!');
+      setCashAmount('');
     } catch (error) {
       setErrorMessage('Failed to add deposit. Please try again.');
     }

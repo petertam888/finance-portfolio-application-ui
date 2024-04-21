@@ -14,6 +14,11 @@ const NavBar = () => {
             <button className="hover:bg-blue-400 bg-blue-600 text-white py-2 px-4 rounded-lg">Add Transaction Record</button>
           </Link>
         </li>
+        <li>
+          <Link href={`/check_transaction`}>
+            <button className="hover:bg-blue-400 bg-blue-600 text-white py-2 px-4 rounded-lg">Check Transactions Record</button>
+          </Link>
+        </li>
       </ul>
     </nav>
   );

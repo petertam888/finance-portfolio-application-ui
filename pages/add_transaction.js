@@ -13,7 +13,7 @@ export default function Transaction() {
     <div className="flex flex-col h-screen bg-black">
       {/* Page title and Back to Home button */}
       <div className="flex items-center justify-between bg-blue-600 text-white px-4 py-2">
-        <h1 className="text-2xl font-bold">Transaction Record</h1>
+        <h1 className="text-2xl font-bold">Create Transaction Record</h1>
         <button onClick={navigateToHome} className="bg-blue-800 hover:bg-blue-700 text-white py-2 px-4 rounded-lg">
           Back to Home
         </button>
