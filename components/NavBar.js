@@ -10,7 +10,7 @@ const NavBar = () => {
           </Link>
         </li>
         <li>
-          <Link href={`/transaction`}>
+          <Link href={`/add_transaction`}>
             <button className="hover:bg-blue-400 bg-blue-600 text-white py-2 px-4 rounded-lg">Add Transaction Record</button>
           </Link>
         </li>
