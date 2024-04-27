@@ -4,6 +4,7 @@ import { useBackendUrl } from '../context/BackendUrlContext';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import { useRouter } from 'next/router';
+import { Button } from "@/components/ui/button"
 
 const CheckUserTransactionRecords = () => {
   const { backendUrl } = useBackendUrl();
@@ -90,7 +91,7 @@ const CheckUserTransactionRecords = () => {
         </button>
       </div>
       <div className="mb-4">
-        <label htmlFor="stockSelect" className="font-semibold mr-2">Select Stock:</label>
+        <label htmlFor="stockSelect" className="font-semibold mr-2" style={{ color: 'white' }} > Search Scope:</label>
         <select
           id="stockSelect"
           value={selectedStock}
@@ -103,8 +104,9 @@ const CheckUserTransactionRecords = () => {
           ))}
         </select>
       </div>
-      <div className="mb-4 flex">
+      <div className="mb-4 flex items-center" >
         <div className="mr-2">
+        <label className="font-semibold mr-2" style={{ color: 'white' }} > Time Range:</label>
           <label className="font-semibold mr-2">From:</label>
           <DatePicker
             selected={startDate}
@@ -133,17 +135,11 @@ const CheckUserTransactionRecords = () => {
             minDate={startDate}
           />
         </div>
-      </div>
-      <div className="mb-4">
-        <label>
-          <input
-            type="checkbox"
-            checked={clearTimeScope}
-            onChange={handleClearTimeScopeChange}
-            className="mr-2"
-          />
-          Reset Time Scope
-        </label>
+        <div className="ml-4">
+          <button onClick={handleClearTimeScopeChange} className="bg-blue-800 hover:bg-blue-700 text-white py-2 px-4 rounded-lg mt-4">
+            Reset Time Scope
+          </button>
+        </div>
       </div>
       {isLoading ? (
         <p>Loading...</p>

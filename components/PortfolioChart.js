@@ -69,19 +69,20 @@ const PortfolioChart = ({ portfolioInfo }) => {
         },
       },
       legend: {
-        position: 'bottom',
+        position: 'left',
         labels: {
           font: {
-            size: 14,
+            size: 10,
           },
+          color:"white"
         },
       },
       title: {
         display: true,
-        color:'green',
+        color:'white',
         text: 'Portfolio Composition',
         font: {
-          size: 16,
+          size: 20,
           weight: 'bold',
         },
       },
