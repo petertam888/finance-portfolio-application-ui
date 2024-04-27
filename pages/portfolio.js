@@ -10,7 +10,7 @@ const Portfolio = () => {
   };
 
   return (
-    <div className="flex flex-col h-screen bg-black">
+    <div className="bg-gradient-to-b from-blue-900 to-blue-600 h-screen flex flex-col">
       {/* Page title and Back to Home button */}
       <div className="bg-blue-600 text-white px-4 py-2">
         <div className="container mx-auto flex justify-between items-center">
@@ -22,7 +22,7 @@ const Portfolio = () => {
       </div>
 
       {/* Main content */}
-      <div className="flex-grow container mx-auto px-4 py-8">
+      <div className="container mx-auto px-4 py-8 flex-grow">
         <CheckPortfolio />
       </div>
     </div>
@@ -30,5 +30,6 @@ const Portfolio = () => {
 };
 
 export default Portfolio;
+
 
 

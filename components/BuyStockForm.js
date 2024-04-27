@@ -1,14 +1,14 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { useBackendUrl } from '../context/BackendUrlContext';
+import { Calendar } from "@/components/ui/calendar"
+
 
 const BuyStockForm = () => {
   const { backendUrl } = useBackendUrl();
   const [stockCode, setStockCode] = useState('');
   const [shares, setShares] = useState('');
-  const [year, setYear] = useState('');
-  const [month, setMonth] = useState('');
-  const [day, setDay] = useState('');
+  const [selectedDate, setSelectedDate] = useState(new Date());
   const [stockPrice, setStockPrice] = useState('');
 
   const [errorMessage, setErrorMessage] = useState('');
@@ -16,13 +16,14 @@ const BuyStockForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
+      const year = selectedDate.getFullYear();
+      const month = selectedDate.getMonth() + 1;
+      const day = selectedDate.getDate();
+
       await axios.get(`${backendUrl}/api/transaction/1/record/${year}_${month}_${day}/${stockCode}/${stockPrice}/${shares}`);
       alert('Stock bought successfully!');
       setStockCode('');
       setShares('');
-      setYear('');
-      setMonth('');
-      setDay('');
       setStockPrice('');
       setErrorMessage('');
     } catch (error) {
@@ -37,29 +38,11 @@ const BuyStockForm = () => {
           <div className="mb-4">
             <label className="block text-gray-700 font-bold mb-2" htmlFor="AddStockRecord">Transaction Date</label>
             <div className="flex">
-              <input
-                id="transactionYear"
-                type="number"
-                value={year}
-                onChange={(e) => setYear(e.target.value)}
-                className="w-1/3 mr-1 px-3 py-2 border rounded-lg focus:outline-none focus:border-blue-500 text-black"
-                placeholder="YYYY"
-              />
-              <input
-                id="transactionMonth"
-                type="number"
-                value={month}
-                onChange={(e) => setMonth(e.target.value)}
-                className="w-1/3 mr-1 px-3 py-2 border rounded-lg focus:outline-none focus:border-blue-500 text-black"
-                placeholder="MM"
-              />
-              <input
-                id="transactionDay"
-                type="number"
-                value={day}
-                onChange={(e) => setDay(e.target.value)}
-                className="w-1/3 px-3 py-2 border rounded-lg focus:outline-none focus:border-blue-500 text-black"
-                placeholder="DD"
+              <Calendar
+                mode="single"
+                selected={selectedDate}
+                onSelect={setSelectedDate}
+                className="rounded-md border"
               />
             </div>
           </div>

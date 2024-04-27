@@ -7,7 +7,7 @@ const generateRandomColor = () => {
   const r = Math.floor(Math.random() * 256);
   const g = Math.floor(Math.random() * 256);
   const b = Math.floor(Math.random() * 256);
-  return `rgba(${r}, ${g}, ${b}, 0.5)`;
+  return `rgba(${r}, ${g}, ${b}, 0.8)`;
 };
 
 const PortfolioChart = ({ portfolioInfo }) => {
@@ -40,7 +40,7 @@ const PortfolioChart = ({ portfolioInfo }) => {
   const compositions = [...stockCompositions, cashComposition];
 
   // Define colors for stocks and cash
-  const colors = labels.map(label => (label === 'Cash' ? 'rgba(128, 128, 128, 0.5)' : generateRandomColor()));
+  const colors = labels.map(label => (label === 'Cash' ? 'rgba(128, 128, 128, 0.8)' : generateRandomColor()));
 
   // Define chart data
   const chartData = {
@@ -50,7 +50,7 @@ const PortfolioChart = ({ portfolioInfo }) => {
         label: 'Portfolio Composition',
         data: compositions,
         backgroundColor: colors,
-        borderColor: colors.map(color => color.replace('0.5', '1')),
+        borderColor: colors.map(color => color.replace('0.8', '1')),
         borderWidth: 1,
       },
     ],
@@ -59,27 +59,44 @@ const PortfolioChart = ({ portfolioInfo }) => {
   const chartOptions = {
     responsive: true,
     plugins: {
+      tooltip: {
+        callbacks: {
+          label: (context) => {
+            const label = context.label || '';
+            const value = context.parsed || 0;
+            return `${label}: ${value.toFixed(2)}%`;
+          },
+        },
+      },
       legend: {
-        position: 'top',
+        position: 'bottom',
         labels: {
-          fontSize: 12 // Increase legend font size
-        }
+          font: {
+            size: 14,
+          },
+        },
       },
       title: {
         display: true,
+        color:'green',
         text: 'Portfolio Composition',
+        font: {
+          size: 16,
+          weight: 'bold',
+        },
       },
     },
   };
 
   return (
-    <div style={{ marginTop: '10px', width: '50%', minWidth: '300px' }}>
+    <div style={{ marginTop: '20px', width: '70%', minWidth: '300px' }}>
       <Pie data={chartData} options={chartOptions} />
     </div>
   );
 };
 
 export default PortfolioChart;
+
 
 
 

@@ -27,7 +27,7 @@ const CheckPortfolio = () => {
 
   return (
     <div className="container mx-auto px-4 py-8">
-      <h1 className="text-3xl font-semibold mb-4">Portfolio Detail</h1>
+      <h1 className="text-3xl font-semibold mb-4" style={{ color: 'goldenrod' }}>Portfolio Detail</h1>
       {isLoading ? (
         <p>Loading...</p>
       ) : errorMessage ? (
@@ -35,14 +35,14 @@ const CheckPortfolio = () => {
       ) : portfolioInfo && (
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           <div>
-            <h2 className="text-xl font-semibold mb-2">Account Summary</h2>
+            <h2 className="text-xl font-semibold mb-2" style={{ color: 'white' }}>Account Summary</h2>
             <div className="bg-gray-100 p-4 rounded-lg">
               <p className="text-black"><span className="font-semibold text-black">Total Account Amount:</span> ${portfolioInfo.totalAccountAmount}</p>
               <p className="text-black"><span className="font-semibold text-black">Cash Amount:</span> ${portfolioInfo.cashAmount}</p>
             </div>
           </div>
           <div>
-            <h2 className="text-xl font-semibold mb-2">Stocks Info</h2>
+            <h2 className="text-xl font-semibold mb-2" style={{ color: 'white' }} >Stocks Info</h2>
             <div className="bg-gray-100 p-4 rounded-lg">
               <ul>
                 {portfolioInfo.stocksInfo.map((stock, index) => (
