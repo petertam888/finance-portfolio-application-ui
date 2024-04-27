@@ -27,7 +27,7 @@ const CheckPortfolio = () => {
 
   return (
     <div className="container mx-auto px-4 py-8">
-      <h1 className="text-3xl font-semibold mb-4">Portfolio Information</h1>
+      <h1 className="text-3xl font-semibold mb-4">Portfolio Detail</h1>
       {isLoading ? (
         <p>Loading...</p>
       ) : errorMessage ? (

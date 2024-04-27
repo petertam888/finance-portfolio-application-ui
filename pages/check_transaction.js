@@ -49,14 +49,6 @@ const CheckUserTransactionRecords = () => {
   }, [transactionsInfo]);
 
   useEffect(() => {
-    // Initialize selectedStock based on the first unique stock code if transactionsInfo is available
-    if (transactionsInfo && transactionsInfo.length > 0) {
-      const firstStockCode = transactionsInfo[0].stockCode;
-      setSelectedStock(firstStockCode);
-    }
-  }, [transactionsInfo]);
-
-  useEffect(() => {
     // Filter transactions based on selected stock code and time scope
     if (transactionsInfo && !clearTimeScope) {
       let filtered = transactionsInfo;
