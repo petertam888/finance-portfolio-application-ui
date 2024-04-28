@@ -1,6 +1,7 @@
 import React from 'react';
 import CheckPortfolio from '../components/CheckPortfolio';
 import { useRouter } from 'next/router';
+import GetUserBriefProfits from '@/components/GetUserBriefProfits';
 
 const Portfolio = () => {
   const router = useRouter();
@@ -24,6 +25,9 @@ const Portfolio = () => {
       {/* Main content */}
       <div className="container mx-auto px-4 py-8 flex-grow">
         <CheckPortfolio />
+      </div>
+      <div className="container mx-auto px-4 py-8 flex-grow">
+        <GetUserBriefProfits />
       </div>
     </div>
   );

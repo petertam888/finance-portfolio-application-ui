@@ -40,7 +40,7 @@ const PortfolioChart = ({ portfolioInfo }) => {
   const compositions = [...stockCompositions, cashComposition];
 
   // Define colors for stocks and cash
-  const colors = labels.map(label => (label === 'Cash' ? 'rgba(128, 128, 128, 0.8)' : generateRandomColor()));
+  const colors = labels.map(label => (label === 'Cash' ? 'rgba(255, 215, 0, 0.8)' : generateRandomColor()));
 
   // Define chart data
   const chartData = {
