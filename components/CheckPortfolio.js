@@ -55,7 +55,8 @@ const CheckPortfolio = () => {
           <div>
             <h2 className="text-xl font-semibold mb-2" style={{ color: 'white' }}>Account Summary</h2>
             <div className="bg-gray-100 p-4 rounded-lg">
-              <p className="text-black"><span className="font-semibold text-black">Total Account Amount:</span> ${portfolioInfo.totalAccountAmount}</p>
+            <p className="text-black"><span className="font-semibold text-black">Total Account Amount (HKD):</span> ${(portfolioInfo.totalAccountAmount*7.85).toFixed(2)}</p>
+              <p className="text-black"><span className="font-semibold text-black">Total Account Amount (USD):</span> ${(portfolioInfo.totalAccountAmount).toFixed(2)}</p>
               <p className="text-black"><span className="font-semibold text-black">Cash Amount:</span> ${portfolioInfo.cashAmount}</p>
             </div>
           </div>
