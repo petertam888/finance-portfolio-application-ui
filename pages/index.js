@@ -18,6 +18,9 @@ export default function Home() {
             <Link href={`/add_transaction`}>
               <Button variant="secondary" size="sm">Add Transaction</Button>
             </Link>
+            <Link href={`/add_dividend_record`}>
+              <Button variant="secondary" size="sm">Add Dividend Record</Button>
+            </Link>
             <Link href={`/check_transaction`}>
               <Button variant="secondary" size="sm">Check Transactions</Button>
             </Link>
