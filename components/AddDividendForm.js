@@ -43,11 +43,28 @@ const AddDividendRecordForm = () => {
           <label className="block text-gray-700 font-bold mb-2" htmlFor="transactionDate">Transaction Date</label>
           <div className="flex">
             <Calendar
-              mode="single"
-              selected={selectedDate}
-              onSelect={setSelectedDate}
-              className="rounded-md border"
-            />
+                mode="single"
+                selected={selectedDate}
+                onSelect={setSelectedDate}
+                className="rounded-md border"
+                classNames={{
+                  months: "flex flex-col sm:flex-row space-y-4 sm:space-x-4 sm:space-y-0",
+                  month: "space-y-4",
+                  caption: "flex justify-center pt-1 relative items-center text-black",
+                  caption_label: "text-sm font-medium",
+                  nav: "space-x-1 flex items-center",
+                  nav_button: "h-7 w-7 bg-transparent p-0 text-black hover:bg-gray-100",
+                  table: "w-full border-collapse space-y-1",
+                  head_row: "flex w-full",
+                  head_cell: "text-black w-10 font-medium text-[0.8rem] text-center",
+                  row: "flex w-full mt-2",
+                  cell: "text-center text-sm relative w-10 h-10 hover:bg-gray-100 focus-within:relative focus-within:z-20",
+                  day: "h-10 w-10 p-0 font-normal text-gray-500 hover:bg-gray-100",
+                  day_selected: "bg-blue-500 text-white hover:bg-blue-600",
+                  day_today: "bg-gray-100 text-black",
+                  day_outside: "text-gray-300 opacity-50"
+                }}
+              />
           </div>
         </div>
         <div className="mb-4">
