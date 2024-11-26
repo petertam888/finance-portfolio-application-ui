@@ -10,7 +10,7 @@ const BuyStockForm = () => {
   const [shares, setShares] = useState('');
   const [selectedDate, setSelectedDate] = useState(new Date());
   const [stockPrice, setStockPrice] = useState('');
-
+  const [transactionType, setTransactionType] = useState('buy');
   const [errorMessage, setErrorMessage] = useState('');
 
   const handleSubmit = async (e) => {
@@ -20,14 +20,17 @@ const BuyStockForm = () => {
       const month = selectedDate.getMonth() + 1;
       const day = selectedDate.getDate();
 
-      await axios.get(`${backendUrl}/api/transaction/1/record/${year}_${month}_${day}/${stockCode}/${stockPrice}/${shares}`);
-      alert('Stock bought successfully!');
+      const adjustedShares = transactionType === 'sell' ? -Math.abs(shares) : Math.abs(shares);
+
+      await axios.get(`${backendUrl}/api/transaction/1/record/${year}_${month}_${day}/${stockCode}/${stockPrice}/${adjustedShares}`);
+      alert(`Stock ${transactionType === 'buy' ? 'bought' : 'sold'} successfully!`);
       setStockCode('');
       setShares('');
       setStockPrice('');
       setErrorMessage('');
+      setTransactionType('buy');
     } catch (error) {
-      setErrorMessage('Failed to buy stock. Please try again.');
+      setErrorMessage(`Failed to ${transactionType} stock. Please try again.`);
     }
   };
 
@@ -86,21 +89,55 @@ const BuyStockForm = () => {
             />
           </div>
           <div className="mb-4">
-            <label className="block text-gray-700 font-bold mb-2" htmlFor="SetStockShares">Shares</label>
+            <label className="block text-gray-700 font-bold mb-2">Transaction Type</label>
+            <div className="flex space-x-4">
+              <button
+                type="button"
+                onClick={() => setTransactionType('buy')}
+                className={`flex-1 py-2 px-4 rounded-lg font-bold ${
+                  transactionType === 'buy'
+                    ? 'bg-blue-500 text-white'
+                    : 'bg-gray-200 text-gray-700'
+                }`}
+              >
+                Buy
+              </button>
+              <button
+                type="button"
+                onClick={() => setTransactionType('sell')}
+                className={`flex-1 py-2 px-4 rounded-lg font-bold ${
+                  transactionType === 'sell'
+                    ? 'bg-red-500 text-white'
+                    : 'bg-gray-200 text-gray-700'
+                }`}
+              >
+                Sell
+              </button>
+            </div>
+          </div>
+          <div className="mb-4">
+            <label className="block text-gray-700 font-bold mb-2" htmlFor="SetStockShares">
+              Shares ({transactionType === 'buy' ? 'Buying' : 'Selling'})
+            </label>
             <input
               id="SetStockShares"
               type="number"
               value={shares}
               onChange={(e) => setShares(e.target.value)}
               className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:border-blue-500 text-black"
-              placeholder="Enter shares"
+              placeholder={`Enter shares to ${transactionType}`}
+              min="0"
             />
           </div>
           <button
             type="submit"
-            className="w-full bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-lg focus:outline-none focus:shadow-outline"
+            className={`w-full font-bold py-2 px-4 rounded-lg focus:outline-none focus:shadow-outline ${
+              transactionType === 'buy'
+                ? 'bg-blue-500 hover:bg-blue-600 text-white'
+                : 'bg-red-500 hover:bg-red-600 text-white'
+            }`}
           >
-            Add Transaction Record
+            {transactionType === 'buy' ? 'Buy Shares' : 'Sell Shares'}
           </button>
         </div>
       </form>
