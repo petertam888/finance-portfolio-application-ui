@@ -47,6 +47,11 @@ export default function Home() {
               Add Transaction
             </Button>
           </Link>
+          <Link href="/import_transaction">
+            <Button size="lg" variant="outline">
+              Import Transactions
+            </Button>
+          </Link>
         </div>
       </div>
     </div>
