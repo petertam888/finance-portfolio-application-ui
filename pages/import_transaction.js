@@ -22,7 +22,7 @@ const ImportTransactionPage = () => {
         symbol: symbol.trim(),
         transactionType: action.trim(),
         price: parseFloat(price.trim()),
-        quantity: parseInt(quantity.trim(), 10),
+        quantity: parseFloat(quantity.trim()),
       });
     }
 
